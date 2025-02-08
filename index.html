@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>❤️Guduu❤️</title>
+    <style>
+        body {
+            text-align: center;
+            background: radial-gradient(circle, #ff99cc, #ff0066);
+            font-family: 'Arial', sans-serif;
+            color: white;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        h1 {
+            font-size: 5vw;
+            margin-top: 10px;
+            text-shadow: 2px 2px 10px white;
+        }
+        /* Floating Hearts */
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 2rem;
+            animation: float 5s infinite linear;
+        }
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0); opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+        /* Glowing Love Text */
+        .love-text {
+            font-size: 4vw;
+            font-weight: bold;
+            text-shadow: 0 0 10px white, 0 0 20px red, 0 0 30px pink;
+            animation: glow 1.5s infinite alternate;
+            margin-top: 10px;
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 10px white, 0 0 20px red, 0 0 30px pink; }
+            to { text-shadow: 0 0 20px white, 0 0 30px red, 0 0 40px pink; }
+        }
+        /* Proposal Buttons */
+        .proposal {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        button {
+            background: white;
+            color: #ff0066;
+            font-size: 4vw;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+        button:hover {
+            background: #ff4d6d;
+            color: white;
+        }
+        /* Moving NO Button */
+        #noButton {
+            position: absolute;
+            transition: 0.2s;
+        }
+        /* Fireworks */
+        .fireworks {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, yellow, transparent);
+            border-radius: 50%;
+            opacity: 0;
+            animation: explode 1s infinite;
+        }
+        @keyframes explode {
+            0% { transform: scale(0); opacity: 1; }
+            100% { transform: scale(3); opacity: 0; }
+        }
+        /* Media Queries for Mobile */
+        @media (max-width: 768px) {
+            h1 { font-size: 6vw; }
+            .love-text { font-size: 5vw; }
+            button { font-size: 5vw; padding: 8px 12px; }
+            .heart { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <h1>💖 Happy Propose Day, Swagatika 💖</h1>
+
+    <!-- Floating Hearts -->
+    <script>
+        function createHeart() {
+            let heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "❤️";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 2 + 3 + "s";
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+        setInterval(createHeart, 300);
+    </script>
+
+    <!-- Glowing "I Love You" Text -->
+    <div class="love-text">I Love You ❤</div>
+
+    <!-- Proposal Buttons -->
+    <div class="proposal">
+        <button onclick="yesClicked()">YES 💕</button>
+        <button id="noButton" onmouseover="moveButton()" ontouchstart="moveButton()">NO ❌</button>
+    </div>
+
+    <!-- Fireworks Effect -->
+    <div class="fireworks" id="fireworks"></div>
+
+    <!-- Background Music -->
+    <audio autoplay loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+    </audio>
+
+    <script>
+        // Fireworks Animation
+        function startFireworks() {
+            let fireworks = document.getElementById("fireworks");
+            fireworks.style.opacity = "1";
+            setTimeout(() => { fireworks.style.opacity = "0"; }, 1000);
+        }
+
+        // YES Button Clicked
+        function yesClicked() {
+            alert("💖 kuch kehna tha tumse 💖💖 tum suna chahogi kya ?? 💖💖 zindagi ek chota sa safar hai 💖💖 tum mera saath 💖💖 chalna chahogi kya ?? 💖💖 waise toh maine gawaya hai... 💖💖 har apni pyari chizz ko 💖💖 tum fir bhi.........!! 💖💖 woh pyari chiz.... 💖💖 banna chaohogi kya?? 💖💖 I Love You Swagatika!! 💖💖 Happy Propose day  💖 💖 I love you forever. 💕  💖 ");
+            startFireworks();
+        }
+
+        // Move "NO" Button When Hovered or Tapped
+        function moveButton() {
+            let noButton = document.getElementById("noButton");
+            let x = Math.random() * (window.innerWidth - 100);
+            let y = Math.random() * (window.innerHeight - 100);
+            noButton.style.left = x + "px";
+            noButton.style.top = y + "px";
+        }
+    </script>
+</body>
+</html>
