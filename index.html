@@ -1,77 +1,68 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>❤️Guduu❤️</title>
+    <title>Happy Birthday My Love! 🎂💖</title>
     <style>
         body {
             text-align: center;
-            background: radial-gradient(circle, #ff99cc, #ff0066);
+            background: black;
             font-family: 'Arial', sans-serif;
             color: white;
             overflow: hidden;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            position: relative;
+        }
+        /* Background Video */
+        .video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         h1 {
-            font-size: 5vw;
-            margin-top: 10px;
-            text-shadow: 2px 2px 10px white;
+            font-size: 50px;
+            text-shadow: 0 0 10px pink, 0 0 20px red;
+            margin-top: 20px;
         }
-        /* Floating Hearts */
+        /* Floating Hearts Animation */
         .heart {
             position: absolute;
+            font-size: 30px;
             color: red;
-            font-size: 2rem;
             animation: float 5s infinite linear;
         }
         @keyframes float {
             0% { transform: translateY(100vh) rotate(0); opacity: 1; }
             100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
         }
-        /* Glowing Love Text */
-        .love-text {
-            font-size: 4vw;
-            font-weight: bold;
-            text-shadow: 0 0 10px white, 0 0 20px red, 0 0 30px pink;
-            animation: glow 1.5s infinite alternate;
-            margin-top: 10px;
-        }
-        @keyframes glow {
-            from { text-shadow: 0 0 10px white, 0 0 20px red, 0 0 30px pink; }
-            to { text-shadow: 0 0 20px white, 0 0 30px red, 0 0 40px pink; }
-        }
-        /* Proposal Buttons */
-        .proposal {
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-        }
-        button {
+        /* Surprise Button */
+        .surprise-btn, .gift-box {
             background: white;
             color: #ff0066;
-            font-size: 4vw;
-            padding: 10px 15px;
+            font-size: 22px;
+            padding: 10px 20px;
             border: none;
             border-radius: 10px;
             cursor: pointer;
-            transition: 0.3s;
-            font-weight: bold;
+            margin-top: 20px;
         }
-        button:hover {
+        .surprise-btn:hover, .gift-box:hover {
             background: #ff4d6d;
             color: white;
         }
-        /* Moving NO Button */
-        #noButton {
-            position: absolute;
-            transition: 0.2s;
+        /* Hidden Love Letter */
+        .love-letter {
+            font-size: 20px;
+            display: none;
+            margin-top: 20px;
         }
         /* Fireworks */
         .fireworks {
@@ -89,18 +80,18 @@
             0% { transform: scale(0); opacity: 1; }
             100% { transform: scale(3); opacity: 0; }
         }
-        /* Media Queries for Mobile */
-        @media (max-width: 768px) {
-            h1 { font-size: 6vw; }
-            .love-text { font-size: 5vw; }
-            button { font-size: 5vw; padding: 8px 12px; }
-            .heart { font-size: 1.5rem; }
-        }
     </style>
 </head>
 <body>
-    <h1>💖 Happy Propose Day, Swagatika 💖</h1>
+    <!-- Background Video -->
+    <div class="video-container">
+        <video autoplay muted loop>
+            <source src="your-video.mp4" type="video/mp4">
+        </video>
+    </div>
 
+    <h1>🎂 Happy Birthday My Love! 💖</h1>
+    
     <!-- Floating Hearts -->
     <script>
         function createHeart() {
@@ -108,51 +99,51 @@
             heart.classList.add("heart");
             heart.innerHTML = "❤️";
             heart.style.left = Math.random() * 100 + "vw";
-            heart.style.animationDuration = Math.random() * 2 + 3 + "s";
+            heart.style.animationDuration = Math.random() * 3 + 2 + "s";
             document.body.appendChild(heart);
             setTimeout(() => heart.remove(), 5000);
         }
         setInterval(createHeart, 300);
     </script>
 
-    <!-- Glowing "I Love You" Text -->
-    <div class="love-text">I Love You ❤</div>
+    <!-- Love Letter -->
+    <div class="love-letter" id="loveLetter"> In your eyes, I see my world so bright,💕<br>With you, every moment feels just right.💕<br> Today, I gather all my love to say,💕<br> Will you be mine, forever and always?💕 ❤️ <br> Happy Propose Day, Guduu ✨💘 💕 </div>
 
-    <!-- Proposal Buttons -->
-    <div class="proposal">
-        <button onclick="yesClicked()">YES 💕</button>
-        <button id="noButton" onmouseover="moveButton()" ontouchstart="moveButton()">NO ❌</button>
-    </div>
-
+    <!-- Surprise Button -->
+    <button class="surprise-btn" onclick="revealLetter()">💌 Open Surprise 💌</button>
+    
     <!-- Fireworks Effect -->
     <div class="fireworks" id="fireworks"></div>
 
-    <!-- Background Music -->
-    <audio autoplay loop>
-        <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
-    </audio>
-
+    <!-- Gift Box -->
+    <button class="gift-box" onclick="revealGift()">🎁 Open Your Gift! 🎉</button>
+    
     <script>
-        // Fireworks Animation
+        function revealLetter() {
+            document.getElementById("loveLetter").style.display = "block";
+            startFireworks();
+        }
+
         function startFireworks() {
             let fireworks = document.getElementById("fireworks");
             fireworks.style.opacity = "1";
             setTimeout(() => { fireworks.style.opacity = "0"; }, 1000);
         }
-
-        // YES Button Clicked
-        function yesClicked() {
-            alert("💖 kuch kehna tha tumse 💖💖 tum suna chahogi kya ?? 💖💖 zindagi ek chota sa safar hai 💖💖 tum mera saath 💖💖 chalna chahogi kya ?? 💖💖 waise toh maine gawaya hai... 💖💖 har apni pyari chizz ko 💖💖 tum fir bhi.........!! 💖💖 woh pyari chiz.... 💖💖 banna chaohogi kya?? 💖💖 I Love You Swagatika!! 💖💖 Happy Propose day  💖 💖 I love you forever. 💕  💖 ");
-            startFireworks();
+        
+        function revealGift() {
+            alert("💖 kuch kehna tha tumse 💖💖 tum suna chahogi kya ?? 💖💖 zindagi ek chota sa safar hai 💖💖 tum mera saath 💖💖 chalna chahogi kya ?? 💖💖 waise toh maine gawaya hai... 💖💖 har apni pyari chizz ko 💖💖 tum fir bhi.........!! 💖💖 woh pyari chiz.... 💖💖 banna chaohogi kya?? 💖💖 I Love You Swagatika!! 💖💖 Happy Propose day  💖 💖 I love you forever && forever . 💕  💖 ");
         }
+    </script>
 
-        // Move "NO" Button When Hovered or Tapped
-        function moveButton() {
-            let noButton = document.getElementById("noButton");
-            let x = Math.random() * (window.innerWidth - 100);
-            let y = Math.random() * (window.innerHeight - 100);
-            noButton.style.left = x + "px";
-            noButton.style.top = y + "px";
+    <!-- Background Music -->
+    <audio id="bgMusic" loop>
+        <source src="song.mpeg" type="audio/mp3">
+    </audio>
+    <button class="surprise-btn" onclick="playMusic()">🎵 Play Music 🎶</button>
+    
+    <script>
+        function playMusic() {
+            document.getElementById("bgMusic").play();
         }
     </script>
 </body>
